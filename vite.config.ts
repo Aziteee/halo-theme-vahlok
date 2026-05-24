@@ -1,9 +1,9 @@
 import { haloThemePlugin } from "@halo-dev/vite-plugin-halo-theme";
-import UnoCSS from "unocss/vite";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
-  plugins: [haloThemePlugin(), UnoCSS()],
+  plugins: [haloThemePlugin(), tailwindcss()],
   lint: { options: { typeAware: true, typeCheck: true }, ignorePatterns: [".agents"] },
   fmt: {
     printWidth: 100,
@@ -17,4 +17,7 @@ export default defineConfig({
     ignorePatterns: [".agents"],
   },
 
+  staged: {
+    "*": ["echo ok"],
+  },
 });
