@@ -1,42 +1,59 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <slot name="head">
-      <title th:text="${site.title}">Site Title</title>
+      <title th:text="${site.title}">暮灯手札</title>
     </slot>
     <script type="module" src="./js/main.ts"></script>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container">
-        <a class="site-title" th:href="@{/}" th:text="${site.title}">Site Title</a>
-        <nav class="site-nav" th:with="menu = ${menuFinder.getPrimary()}">
-          <ul>
-            <li th:each="item : ${menu.menuItems}">
-              <a
-                th:href="@{${item.status.href}}"
-                th:text="${item.status.displayName}"
-                th:target="${item.spec.target?.value}"
-              ></a>
-            </li>
-          </ul>
+    <div class="page-shell">
+      <header class="site-header" aria-label="站点页眉">
+        <a class="site-mark" th:href="@{/}" th:aria-label="|${site.title}首页|">
+          <span class="site-mark__sigil" aria-hidden="true">M</span>
+          <span>
+            <span
+              class="text-neutral-10 block font-serif text-2xl leading-tight"
+              th:text="${site.title}"
+            >
+              暮灯手札
+            </span>
+            <span class="text-neutral-7 block text-xs tracking-normal uppercase"
+              >Personal Essays</span
+            >
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="主要导航" th:with="menu = ${menuFinder.getPrimary()}">
+          <th:block th:if="${menu != null and not #lists.isEmpty(menu.menuItems)}">
+            <a
+              th:each="item : ${menu.menuItems}"
+              th:href="@{${item.status.href}}"
+              th:text="${item.status.displayName}"
+              th:target="${item.spec.target?.value}"
+            ></a>
+          </th:block>
+          <th:block th:if="${menu == null or #lists.isEmpty(menu.menuItems)}">
+            <a th:href="@{/}">随笔</a>
+            <a th:href="@{/archives}">归档</a>
+            <a th:href="@{/categories}">分类</a>
+            <a th:href="@{/tags}">标签</a>
+          </th:block>
         </nav>
-      </div>
-    </header>
+      </header>
 
-    <main class="site-main">
-      <div class="container">
+      <main class="site-main">
         <slot />
-      </div>
-    </main>
+      </main>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p th:text="${theme.config.basic.custom_footer ?: site.title}"></p>
+      <footer class="site-footer">
+        <p th:text="${theme.config.basic?.custom_footer ?: '暮灯手札 · 写于人间微暗处'}">
+          暮灯手札 · 写于人间微暗处
+        </p>
         <halo:footer />
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

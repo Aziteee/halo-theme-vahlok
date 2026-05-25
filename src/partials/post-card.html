@@ -1,18 +1,22 @@
-<li class="post-item" th:each="post : ${posts.items}">
-  <h2 class="post-title">
-    <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}"></a>
-  </h2>
-  <p class="post-meta">
-    <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
-    <span th:if="${not #lists.isEmpty(post.categories)}">
-      &nbsp;·&nbsp;
-      <a
-        th:each="cat : ${post.categories}"
-        th:href="@{${cat.status.permalink}}"
-        th:text="${cat.spec.displayName}"
-        class="category"
-      ></a>
-    </span>
-  </p>
-  <p class="post-excerpt" th:text="${post.status.excerpt}"></p>
-</li>
+<article class="essay-item" th:each="post, stat : ${posts.items}">
+  <span class="essay-item__number" th:text="${stat.count}">I</span>
+  <div>
+    <p class="essay-meta">
+      <span th:if="${not #lists.isEmpty(post.categories)}">
+        <a
+          class="hover:text-neutral-10"
+          th:href="@{${post.categories[0].status.permalink}}"
+          th:text="${post.categories[0].spec.displayName}"
+        ></a>
+        ·
+      </span>
+      <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}">2026.05.24</time>
+    </p>
+    <h2 class="essay-title">
+      <a th:href="@{${post.status.permalink}}" th:text="${post.spec.title}">在雨声里整理旧日心绪</a>
+    </h2>
+    <p class="essay-excerpt" th:text="${post.status.excerpt}">
+      雨落在窗沿上时，世界像被翻到一页稍暗的纸。
+    </p>
+  </div>
+</article>

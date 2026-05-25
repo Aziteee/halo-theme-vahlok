@@ -1,56 +1,55 @@
 <include src="layout.html">
   <template name="head">
-    <title th:text="|${post.spec.title} - ${site.title}|">Post Title</title>
+    <title th:text="|${post.spec.title} - ${site.title}|">文章</title>
     <script type="module" src="./js/post.ts"></script>
   </template>
 
-  <article>
+  <article class="article-shell">
     <header class="article-header">
-      <h1 class="article-title" th:text="${post.spec.title}"></h1>
-      <div class="article-meta">
-        <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy-MM-dd')}"></time>
+      <div class="essay-meta">
         <span th:if="${not #lists.isEmpty(post.categories)}">
-          &nbsp;·&nbsp;
           <a
-            th:each="cat : ${post.categories}"
-            th:href="@{${cat.status.permalink}}"
-            th:text="${cat.spec.displayName}"
-            class="category"
+            class="hover:text-neutral-10"
+            th:href="@{${post.categories[0].status.permalink}}"
+            th:text="${post.categories[0].spec.displayName}"
           ></a>
+          ·
         </span>
+        <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}">2026.05.24</time>
       </div>
+      <h1 class="article-title" th:text="${post.spec.title}">在雨声里整理旧日心绪</h1>
     </header>
 
     <div class="article-content" th:utext="${post.content.content}"></div>
 
-    <div class="article-tags" th:if="${not #lists.isEmpty(post.tags)}">
+    <div class="chip-list mt-8" th:if="${not #lists.isEmpty(post.tags)}">
       <a
+        class="chip"
         th:each="tag : ${post.tags}"
         th:href="@{${tag.status.permalink}}"
         th:text="${tag.spec.displayName}"
-        class="tag"
-      ></a>
+      >
+        夜谈
+      </a>
     </div>
 
-    <nav class="post-nav" th:with="cursor = ${postFinder.cursor(post.metadata.name)}">
-      <span>
-        <a
-          th:if="${cursor.hasPrevious()}"
-          th:href="@{${cursor.previous.status.permalink}}"
-          th:text="|← ${cursor.previous.spec.title}|"
-        ></a>
-      </span>
-      <span>
-        <a
-          th:if="${cursor.hasNext()}"
-          th:href="@{${cursor.next.status.permalink}}"
-          th:text="|${cursor.next.spec.title} →|"
-        ></a>
-      </span>
+    <nav
+      class="post-nav"
+      th:with="cursor = ${postFinder.cursor(post.metadata.name)}"
+      aria-label="相邻文章"
+    >
+      <a th:if="${cursor.hasPrevious()}" th:href="@{${cursor.previous.status.permalink}}">
+        <span class="text-neutral-7 block text-sm">上一篇</span>
+        <span th:text="${cursor.previous.spec.title}">上一篇文章</span>
+      </a>
+      <a th:if="${cursor.hasNext()}" th:href="@{${cursor.next.status.permalink}}">
+        <span class="text-neutral-7 block text-sm">下一篇</span>
+        <span th:text="${cursor.next.spec.title}">下一篇文章</span>
+      </a>
     </nav>
   </article>
 
-  <div th:if="${haloCommentEnabled}">
+  <div class="article-shell mt-10" th:if="${haloCommentEnabled}">
     <halo:comment group="content.halo.run" kind="Post" th:attr="name=${post.metadata.name}" />
   </div>
 </include>

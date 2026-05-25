@@ -1,13 +1,18 @@
 <include src="layout.html">
   <template name="head">
-    <title th:text="|${tag.spec.displayName} - ${site.title}|">Tag Archive</title>
+    <title th:text="|${tag.spec.displayName} - ${site.title}|">标签文章</title>
   </template>
 
-  <h1 th:text="|Tag: ${tag.spec.displayName}|"></h1>
+  <section aria-labelledby="tag-title">
+    <p class="kicker">Tag</p>
+    <h1 id="tag-title" class="hero-title" th:text="${tag.spec.displayName}">夜谈</h1>
+  </section>
 
-  <ul class="post-list">
-    <include src="post-card.html"></include>
-  </ul>
+  <section class="section-block">
+    <div class="essay-list">
+      <include src="post-card.html"></include>
+    </div>
 
-  <include src="pagination.html"></include>
+    <include src="pagination.html"></include>
+  </section>
 </include>
