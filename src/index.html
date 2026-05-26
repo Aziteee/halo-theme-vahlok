@@ -4,19 +4,24 @@
     <script type="module" src="./js/index.ts"></script>
   </template>
 
-  <section class="hero" aria-labelledby="hero-title">
-    <p class="kicker">A Private Manuscript</p>
-    <h1 id="hero-title" class="hero-title">写给夜色、旧书与偶然路过的自己。</h1>
-    <p class="hero-intro">
-      这里收存一些私人随笔：雨夜、长街、读书、旅途，以及那些在日常缝隙里忽然亮起的念头。
-    </p>
+  <section class="home-board" aria-labelledby="hero-title">
+    <div class="home-board__copy">
+      <div class="home-board__meta" aria-label="站点索引">
+        <span class="home-badge home-badge--solid">Issue 01</span>
+        <span class="home-badge">Private field notes</span>
+      </div>
+      <p class="kicker">Vahlok Journal</p>
+      <h1 id="hero-title" class="hero-title">把日常写成一份有边角的手稿。</h1>
+      <p class="hero-intro">
+        这里收存私人随笔、阅读札记和偶然路过的念头。版面尽量安静，但保留一点手工刊物的锋利和偏心。
+      </p>
+    </div>
 
     <article class="featured-essay" th:if="${not #lists.isEmpty(posts.items)}">
-      <p class="kicker">Featured Letter</p>
+      <p class="kicker">Latest note</p>
       <p class="essay-meta">
         <span th:if="${not #lists.isEmpty(posts.items[0].categories)}">
           <a
-            class="hover:text-neutral-10"
             th:href="@{${posts.items[0].categories[0].status.permalink}}"
             th:text="${posts.items[0].categories[0].spec.displayName}"
           ></a>
@@ -39,8 +44,11 @@
 
   <section class="section-block" aria-labelledby="essays-title">
     <div class="section-heading">
-      <p class="kicker">Recent Essays</p>
-      <h2 id="essays-title" class="section-title">最近随笔</h2>
+      <div>
+        <p class="kicker">Recent entries</p>
+        <h2 id="essays-title" class="section-title">最近随笔</h2>
+      </div>
+      <p class="section-note">按时间排布，不做瀑布流，让每一篇标题都有足够的呼吸。</p>
     </div>
 
     <div class="essay-list" aria-live="polite">

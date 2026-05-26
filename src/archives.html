@@ -15,12 +15,7 @@
     </div>
 
     <th:block th:each="month : ${archive.months}">
-      <h3
-        class="text-neutral-10 mt-8 mb-4 font-serif text-2xl font-medium"
-        th:text="|${month.month} 月|"
-      >
-        五月
-      </h3>
+      <h3 class="archive-month" th:text="|${month.month} 月|">五月</h3>
       <div class="essay-list">
         <article class="essay-item" th:each="post, stat : ${month.posts}">
           <span class="essay-item__number" th:text="${stat.count}">I</span>

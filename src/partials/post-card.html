@@ -4,7 +4,6 @@
     <p class="essay-meta">
       <span th:if="${not #lists.isEmpty(post.categories)}">
         <a
-          class="hover:text-neutral-10"
           th:href="@{${post.categories[0].status.permalink}}"
           th:text="${post.categories[0].spec.displayName}"
         ></a>

@@ -9,7 +9,6 @@
       <div class="essay-meta">
         <span th:if="${not #lists.isEmpty(post.categories)}">
           <a
-            class="hover:text-neutral-10"
             th:href="@{${post.categories[0].status.permalink}}"
             th:text="${post.categories[0].spec.displayName}"
           ></a>
@@ -39,11 +38,11 @@
       aria-label="相邻文章"
     >
       <a th:if="${cursor.hasPrevious()}" th:href="@{${cursor.previous.status.permalink}}">
-        <span class="text-neutral-7 block text-sm">上一篇</span>
+        <span class="muted-label">上一篇</span>
         <span th:text="${cursor.previous.spec.title}">上一篇文章</span>
       </a>
       <a th:if="${cursor.hasNext()}" th:href="@{${cursor.next.status.permalink}}">
-        <span class="text-neutral-7 block text-sm">下一篇</span>
+        <span class="muted-label">下一篇</span>
         <span th:text="${cursor.next.spec.title}">下一篇文章</span>
       </a>
     </nav>

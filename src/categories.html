@@ -10,17 +10,11 @@
   </section>
 
   <section class="section-block">
-    <div class="grid gap-4 sm:grid-cols-2">
-      <article class="bg-neutral-2 ring-border rounded-lg p-5 ring-1" th:each="cat : ${categories}">
-        <a
-          class="text-neutral-10 hover:text-accent font-serif text-2xl font-medium no-underline"
-          th:href="@{${cat.status.permalink}}"
-          th:text="${cat.spec.displayName}"
-        >
-          日常
-        </a>
+    <div class="term-grid">
+      <article class="term-card" th:each="cat : ${categories}">
+        <a th:href="@{${cat.status.permalink}}" th:text="${cat.spec.displayName}"> 日常 </a>
         <p
-          class="text-neutral-7 mt-3"
+          class="term-card__description"
           th:if="${not #strings.isEmpty(cat.spec.description)}"
           th:text="${cat.spec.description}"
         >
