@@ -12,10 +12,17 @@
     <div class="page-shell">
       <header class="site-header" aria-label="站点页眉">
         <a class="site-mark" th:href="@{/}" th:aria-label="|${site.title}首页|">
-          <span class="site-mark__sigil" aria-hidden="true">V</span>
+          <span class="site-mark__sigil" aria-hidden="true">M</span>
           <span>
-            <span class="site-mark__title" th:text="${site.title}"> 暮灯手札 </span>
-            <span class="site-mark__subtitle">notes / essays / fragments</span>
+            <span
+              class="text-neutral-10 block font-serif text-2xl leading-tight"
+              th:text="${site.title}"
+            >
+              暮灯手札
+            </span>
+            <span class="text-neutral-7 block text-xs tracking-normal uppercase"
+              >Personal Essays</span
+            >
           </span>
         </a>
 
