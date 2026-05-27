@@ -12,16 +12,18 @@
     <div class="page-shell">
       <header class="site-header" aria-label="站点页眉">
         <a class="site-mark" th:href="@{/}" th:aria-label="|${site.title}首页|">
-          <span class="site-mark__sigil" aria-hidden="true">M</span>
-          <span>
-            <span
-              class="text-neutral-10 block font-serif text-2xl leading-tight"
-              th:text="${site.title}"
-            >
-              暮灯手札
-            </span>
-            <span class="text-neutral-7 block text-xs tracking-normal uppercase"
-              >Personal Essays</span
+          <span class="mt-1 block font-serif leading-none uppercase">
+            <span class="text-4xl" th:text="${#strings.substring(site.title, 0, 1)}">暮</span
+            ><!--
+         --><span
+              class="text-2xl"
+              th:text="${#strings.substring(site.title, 1, #strings.length(site.title) - 1)}"
+              >灯手</span
+            ><!--
+         --><span
+              class="text-4xl"
+              th:text="${#strings.substring(site.title, #strings.length(site.title) - 1)}"
+              >札</span
             >
           </span>
         </a>
@@ -42,18 +44,32 @@
             <a th:href="@{/tags}">标签</a>
           </th:block>
         </nav>
+
+        <div
+          class="text-neutral-6 mt-6 border-t border-[var(--gold-soft)] pt-5 text-xs leading-relaxed"
+        >
+          <p
+            class="m-0"
+            th:text="|© ${#temporals.format(#temporals.createNow(), 'yyyy')} ${site.title}|"
+          >
+            © 2026 暮灯手札
+          </p>
+          <p class="m-0 mt-1">Powered by Halo and Vahlok</p>
+        </div>
       </header>
 
-      <main class="site-main">
-        <slot />
-      </main>
+      <div class="main-column">
+        <main class="site-main">
+          <slot />
+        </main>
 
-      <footer class="site-footer">
-        <p th:text="${theme.config.basic?.custom_footer ?: '暮灯手札 · 写于人间微暗处'}">
-          暮灯手札 · 写于人间微暗处
-        </p>
-        <halo:footer />
-      </footer>
+        <footer class="site-footer">
+          <p th:text="${theme.config.basic?.custom_footer ?: '暮灯手札 · 写于人间微暗处'}">
+            暮灯手札 · 写于人间微暗处
+          </p>
+          <halo:footer />
+        </footer>
+      </div>
     </div>
   </body>
 </html>

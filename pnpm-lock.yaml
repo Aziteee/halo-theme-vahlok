@@ -12,9 +12,6 @@ importers:
 
   .:
     dependencies:
-      '@yohaku/design-system':
-        specifier: ^0.0.2
-        version: 0.0.2
       alpinejs:
         specifier: ^3.15.12
         version: 3.15.12
@@ -628,9 +625,6 @@ packages:
 
   '@vue/shared@3.1.5':
     resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
-
-  '@yohaku/design-system@0.0.2':
-    resolution: {integrity: sha512-D/pvVINSSJp3x97W/dBYTfk1X0az1+nqh6iuI0aRn7ei3z8iI3ZjykptorksOB82MvvaDnAOYC5d2vp0/lqcEQ==}
 
   abort-controller@3.0.0:
     resolution: {integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==}
@@ -1624,8 +1618,6 @@ snapshots:
       '@vue/shared': 3.1.5
 
   '@vue/shared@3.1.5': {}
-
-  '@yohaku/design-system@0.0.2': {}
 
   abort-controller@3.0.0:
     dependencies:

@@ -4,39 +4,6 @@
     <script type="module" src="./js/index.ts"></script>
   </template>
 
-  <section class="hero" aria-labelledby="hero-title">
-    <p class="kicker">A Private Manuscript</p>
-    <h1 id="hero-title" class="hero-title">写给夜色、旧书与偶然路过的自己。</h1>
-    <p class="hero-intro">
-      这里收存一些私人随笔：雨夜、长街、读书、旅途，以及那些在日常缝隙里忽然亮起的念头。
-    </p>
-
-    <article class="featured-essay" th:if="${not #lists.isEmpty(posts.items)}">
-      <p class="kicker">Featured Letter</p>
-      <p class="essay-meta">
-        <span th:if="${not #lists.isEmpty(posts.items[0].categories)}">
-          <a
-            class="hover:text-neutral-10"
-            th:href="@{${posts.items[0].categories[0].status.permalink}}"
-            th:text="${posts.items[0].categories[0].spec.displayName}"
-          ></a>
-          ·
-        </span>
-        <time th:text="${#temporals.format(posts.items[0].spec.publishTime, 'yyyy.MM.dd')}"
-          >2026.05.24</time
-        >
-      </p>
-      <h2 class="essay-title">
-        <a th:href="@{${posts.items[0].status.permalink}}" th:text="${posts.items[0].spec.title}">
-          在雨声里整理旧日心绪
-        </a>
-      </h2>
-      <p class="essay-excerpt" th:text="${posts.items[0].status.excerpt}">
-        雨落在窗沿上时，世界像被翻到一页稍暗的纸。
-      </p>
-    </article>
-  </section>
-
   <section class="section-block" aria-labelledby="essays-title">
     <div class="section-heading">
       <p class="kicker">Recent Essays</p>

@@ -9,7 +9,6 @@
     "skills:update": "npx skills update"
   },
   "dependencies": {
-    "@yohaku/design-system": "^0.0.2",
     "alpinejs": "^3.15.12"
   },
   "devDependencies": {
