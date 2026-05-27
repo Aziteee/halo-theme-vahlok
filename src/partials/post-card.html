@@ -1,5 +1,4 @@
 <article class="essay-item" th:each="post, stat : ${posts.items}">
-  <span class="essay-item__number" th:text="${stat.count}">I</span>
   <div>
     <p class="essay-meta">
       <span th:if="${not #lists.isEmpty(post.categories)}">

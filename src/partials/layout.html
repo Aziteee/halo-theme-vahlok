@@ -12,19 +12,11 @@
     <div class="page-shell">
       <header class="site-header" aria-label="站点页眉">
         <a class="site-mark" th:href="@{/}" th:aria-label="|${site.title}首页|">
-          <span class="mt-1 block font-serif leading-none uppercase">
-            <span class="text-4xl" th:text="${#strings.substring(site.title, 0, 1)}">暮</span
-            ><!--
-         --><span
-              class="text-2xl"
-              th:text="${#strings.substring(site.title, 1, #strings.length(site.title) - 1)}"
-              >灯手</span
-            ><!--
-         --><span
-              class="text-4xl"
-              th:text="${#strings.substring(site.title, #strings.length(site.title) - 1)}"
-              >札</span
-            >
+          <span class="site-mark__title" th:text="${site.title}">Vahlok</span>
+          <span class="site-mark__rule" aria-hidden="true"></span>
+          <span class="site-mark__subtitle">
+            <span>Quiet notes</span>
+            <span>from dim light</span>
           </span>
         </a>
 
@@ -35,24 +27,25 @@
               th:href="@{${item.status.href}}"
               th:text="${item.status.displayName}"
               th:target="${item.spec.target?.value}"
+              x-data="{ isActive: false }"
+              x-init="isActive = window.location.pathname === $el.getAttribute('href')"
+              x-bind:class="isActive && 'site-nav--active'"
             ></a>
           </th:block>
           <th:block th:if="${menu == null or #lists.isEmpty(menu.menuItems)}">
-            <a th:href="@{/}">随笔</a>
-            <a th:href="@{/archives}">归档</a>
-            <a th:href="@{/categories}">分类</a>
-            <a th:href="@{/tags}">标签</a>
+            <a th:href="@{/}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">随笔</a>
+            <a th:href="@{/archives}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">归档</a>
+            <a th:href="@{/categories}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">分类</a>
+            <a th:href="@{/tags}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">标签</a>
           </th:block>
         </nav>
 
-        <div
-          class="text-neutral-6 mt-6 border-t border-[var(--gold-soft)] pt-5 text-xs leading-relaxed"
-        >
+        <div class="site-header__meta">
           <p
             class="m-0"
             th:text="|© ${#temporals.format(#temporals.createNow(), 'yyyy')} ${site.title}|"
           >
-            © 2026 暮灯手札
+            © 2026 Vahlok
           </p>
           <p class="m-0 mt-1">Powered by Halo and Vahlok</p>
         </div>
@@ -62,13 +55,6 @@
         <main class="site-main">
           <slot />
         </main>
-
-        <footer class="site-footer">
-          <p th:text="${theme.config.basic?.custom_footer ?: '暮灯手札 · 写于人间微暗处'}">
-            暮灯手札 · 写于人间微暗处
-          </p>
-          <halo:footer />
-        </footer>
       </div>
     </div>
   </body>

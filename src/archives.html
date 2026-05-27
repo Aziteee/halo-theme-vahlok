@@ -6,7 +6,7 @@
   <section aria-labelledby="archives-title">
     <p class="kicker">Archive Codex</p>
     <h1 id="archives-title" class="hero-title">归档</h1>
-    <p class="hero-intro">按年份和月份整理文章，适合慢慢回看那些已经写下的片段。</p>
+    <p class="hero-intro">慢慢回看旧日那些已经写下的片段。</p>
   </section>
 
   <section class="section-block" th:each="archive : ${archives.items}">
@@ -23,7 +23,6 @@
       </h3>
       <div class="essay-list">
         <article class="essay-item" th:each="post, stat : ${month.posts}">
-          <span class="essay-item__number" th:text="${stat.count}">I</span>
           <div>
             <p class="essay-meta">
               <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}"
