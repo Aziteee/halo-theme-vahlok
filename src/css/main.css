@@ -111,10 +111,6 @@ button:focus-visible {
     @apply sticky top-0 flex h-screen flex-col overflow-y-auto border-r;
     border-color: var(--gold-soft);
     padding: 42px 22px 42px;
-    background:
-      linear-gradient(180deg, rgba(8, 9, 9, 0.86), rgba(8, 9, 9, 0.58)),
-      linear-gradient(90deg, rgba(214, 181, 111, 0.1), transparent 34%);
-    box-shadow: 18px 0 70px rgba(0, 0, 0, 0.32);
   }
 
   .site-mark {
@@ -139,7 +135,7 @@ button:focus-visible {
 
   .site-mark__rule {
     display: block;
-    width: 118px;
+    width: 170px;
     height: 1px;
     margin: 18px 0 13px;
     background: linear-gradient(90deg, var(--color-accent), transparent);

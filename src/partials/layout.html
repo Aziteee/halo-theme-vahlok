@@ -14,10 +14,7 @@
         <a class="site-mark" th:href="@{/}" th:aria-label="|${site.title}首页|">
           <span class="site-mark__title" th:text="${site.title}">Vahlok</span>
           <span class="site-mark__rule" aria-hidden="true"></span>
-          <span class="site-mark__subtitle">
-            <span>Quiet notes</span>
-            <span>from dim light</span>
-          </span>
+          <span class="site-mark__subtitle" th:text="${site.subtitle}"></span>
         </a>
 
         <nav class="site-nav" aria-label="主要导航" th:with="menu = ${menuFinder.getPrimary()}">
