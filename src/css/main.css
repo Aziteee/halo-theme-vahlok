@@ -100,15 +100,17 @@ button:focus-visible {
   }
 
   .site-nav {
-    @apply text-neutral-7 mt-auto mb-6 flex flex-col gap-1 text-sm;
+    @apply text-neutral-7 mt-auto mb-6 flex flex-col gap-0 text-sm;
   }
 
   .site-nav a {
-    @apply hover:text-neutral-10 border border-transparent px-2.5 py-2 no-underline;
+    @apply hover:text-neutral-10 relative border-l-2 border-transparent px-3 py-2.5 no-underline;
+    letter-spacing: 0.06em;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
   }
 
   .site-nav a:hover {
-    border-color: var(--gold-soft);
+    border-color: var(--color-accent);
     background: rgba(201, 163, 91, 0.08);
   }
 
@@ -147,7 +149,7 @@ button:focus-visible {
 
   .section-title {
     @apply text-neutral-10 m-0 font-serif leading-[1.12] font-normal;
-    font-size: clamp(28px, 4vw, 42px);
+    font-size: clamp(24px, 3vw, 34px);
   }
 
   .essay-list {
@@ -306,7 +308,13 @@ button:focus-visible {
   }
 
   .site-nav {
-    @apply flex-row flex-wrap gap-2;
+    @apply flex-row flex-wrap gap-1;
+  }
+
+  .site-nav a {
+    border-left-width: 0;
+    border-bottom-width: 2px;
+    padding: 6px 10px;
   }
 
   .section-heading,
