@@ -8,6 +8,6 @@ spec:
       label: 基础
       formSchema:
         - $formkit: text
-          name: custom_footer
-          label: 页脚文字
-          value: "暮灯手札 · 写于人间微暗处"
+          name: beian
+          label: 备案号
+          value: ""

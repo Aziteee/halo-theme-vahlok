@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <slot name="head">
-      <title th:text="${site.title}">暮灯手札</title>
+      <title th:text="${site.title}">Vahlok</title>
     </slot>
     <script type="module" src="./js/main.ts"></script>
   </head>
@@ -30,10 +30,41 @@
             ></a>
           </th:block>
           <th:block th:if="${menu == null or #lists.isEmpty(menu.menuItems)}">
-            <a th:href="@{/}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">随笔</a>
-            <a th:href="@{/archives}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">归档</a>
-            <a th:href="@{/categories}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">分类</a>
-            <a th:href="@{/tags}" x-data="{ isActive: false }" x-init="isActive = window.location.pathname === $el.getAttribute('href')" x-bind:class="isActive && 'site-nav--active'">标签</a>
+            <a
+              th:href="@{/}"
+              x-data="{ isActive: false }"
+              x-init="isActive = window.location.pathname === $el.getAttribute('href')"
+              x-bind:class="isActive && 'site-nav--active'"
+              >随笔</a
+            >
+            <a
+              th:href="@{/archives}"
+              x-data="{ isActive: false }"
+              x-init="isActive = window.location.pathname === $el.getAttribute('href')"
+              x-bind:class="isActive && 'site-nav--active'"
+              >归档</a
+            >
+            <a
+              th:href="@{/categories}"
+              x-data="{ isActive: false }"
+              x-init="isActive = window.location.pathname === $el.getAttribute('href')"
+              x-bind:class="isActive && 'site-nav--active'"
+              >分类</a
+            >
+            <a
+              th:href="@{/tags}"
+              x-data="{ isActive: false }"
+              x-init="isActive = window.location.pathname === $el.getAttribute('href')"
+              x-bind:class="isActive && 'site-nav--active'"
+              >标签</a
+            >
+            <a
+              th:href="@{/moments}"
+              x-data="{ isActive: false }"
+              x-init="isActive = window.location.pathname === $el.getAttribute('href')"
+              x-bind:class="isActive && 'site-nav--active'"
+              >瞬间</a
+            >
           </th:block>
         </nav>
 
@@ -44,7 +75,15 @@
           >
             © 2026 Vahlok
           </p>
-          <p class="m-0 mt-1">Powered by Halo and Vahlok</p>
+          <p class="m-0 mt-1" th:if="${theme.config.basic.beian==''}">Powered by Halo and Vahlok</p>
+          <p class="m-0 mt-1" th:unless="${theme.config.basic.beian==''}">
+            <a
+              href="https://beian.miit.gov.cn"
+              target="_blank"
+              rel="noopener"
+              th:text="${theme.config.basic.beian}"
+            ></a>
+          </p>
         </div>
       </header>
 
