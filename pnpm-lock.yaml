@@ -12,9 +12,18 @@ importers:
 
   .:
     dependencies:
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.74
+        version: 1.2.74
+      '@iconify/iconify':
+        specifier: ^3.1.1
+        version: 3.1.1
       alpinejs:
         specifier: ^3.15.12
         version: 3.15.12
+      iconify-icon:
+        specifier: ^3.0.2
+        version: 3.0.2
     devDependencies:
       '@halo-dev/theme-package-cli':
         specifier: ^1.0.1
@@ -59,6 +68,16 @@ packages:
     resolution: {integrity: sha512-Xfp6i0lfUdSQ9nUI7eOdJqcRS8wLZMGmLFcD2wAV3dMevSGPsAFphtgjALKa8Lih4ImQ5ZS3T2cojFEcCzPIjw==}
     peerDependencies:
       vite: ^7.0.0 || ^8.0.0
+
+  '@iconify-json/material-symbols@1.2.74':
+    resolution: {integrity: sha512-GKJcvvm8A25pkh3Z2M430olvP4hDpDKg2sg7cpVnesM4bT7rExH74ThtRLWjdB86qhkxT3XrMuHRJa8LFCRmSw==}
+
+  '@iconify/iconify@3.1.1':
+    resolution: {integrity: sha512-1nemfyD/OJzh9ALepH7YfuuP8BdEB24Skhd8DXWh0hzcOxImbb1ZizSZkpCzAwSZSGcJFmscIBaBQu+yLyWaxQ==}
+    deprecated: no longer maintained, switch to modern iconify-icon web component
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -863,6 +882,9 @@ packages:
     resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
     engines: {node: '>= 0.4'}
 
+  iconify-icon@3.0.2:
+    resolution: {integrity: sha512-DYPAumiUeUeT/GHT8x2wrAVKn1FqZJqFH0Y5pBefapWRreV1BBvqBVMb0020YQ2njmbR59r/IathL2d2OrDrxA==}
+
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
@@ -1286,6 +1308,16 @@ snapshots:
       yaml: 2.8.3
     transitivePeerDependencies:
       - axios
+
+  '@iconify-json/material-symbols@1.2.74':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/iconify@3.1.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify/types@2.0.0': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -1852,6 +1884,10 @@ snapshots:
   hasown@2.0.3:
     dependencies:
       function-bind: 1.1.2
+
+  iconify-icon@3.0.2:
+    dependencies:
+      '@iconify/types': 2.0.0
 
   ieee754@1.2.1: {}
 

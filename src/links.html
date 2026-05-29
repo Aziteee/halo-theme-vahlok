@@ -1,0 +1,71 @@
+<include src="layout.html">
+  <template name="head">
+    <title th:text="|${linksTitle} - ${site.title}|">链接</title>
+  </template>
+
+  <section aria-labelledby="links-title">
+    <p class="kicker">Links</p>
+    <h1 id="links-title" class="hero-title" th:text="${linksTitle}">链接</h1>
+    <p class="hero-intro">值得驻足的好地方。</p>
+  </section>
+
+  <section class="section-block links-section">
+    <div
+      class="link-empty"
+      th:if="${#lists.isEmpty(groups) or (#lists.isEmpty(groups[0].links) and groups.size() == 1)}"
+    >
+      <p class="kicker">No Links</p>
+      <p>还没有添加链接。</p>
+    </div>
+
+    <section class="link-group" th:each="g : ${groups}" th:if="${not #lists.isEmpty(g.links)}">
+      <div class="link-group__heading">
+        <div>
+          <!-- <p class="kicker" th:text="${g.metadata.kicker} ?: 'Collection'">Collection</p> -->
+          <h2 class="section-title" th:text="${g.spec.displayName} ?: '未分组'">分组</h2>
+        </div>
+        <span class="link-group__count" th:text="|${g.links.size()} links|">0 links</span>
+      </div>
+
+      <div class="link-grid">
+        <a
+          class="link-card"
+          th:each="link : ${g.links}"
+          th:href="${link.spec.url}"
+          target="_blank"
+          rel="noopener"
+          th:aria-label="|访问 ${link.spec.displayName}|"
+        >
+          <span class="link-card__logo-wrap">
+            <img
+              class="link-card__logo"
+              th:if="${not #strings.isEmpty(link.spec.logo)}"
+              th:src="${link.spec.logo}"
+              th:alt="${link.spec.displayName}"
+            />
+            <span
+              class="link-card__placeholder"
+              th:unless="${not #strings.isEmpty(link.spec.logo)}"
+            >
+              <iconify-icon icon="material-symbols:link-rounded"></iconify-icon>
+            </span>
+          </span>
+          <span class="link-card__body">
+            <span class="link-card__name" th:text="${link.spec.displayName}">友链名称</span>
+            <small
+              class="link-card__desc"
+              th:if="${not #strings.isEmpty(link.spec.description)}"
+              th:text="${link.spec.description}"
+              >描述</small
+            >
+          </span>
+          <iconify-icon
+            class="link-card__external"
+            icon="material-symbols:arrow-outward-rounded"
+            aria-hidden="true"
+          ></iconify-icon>
+        </a>
+      </div>
+    </section>
+  </section>
+</include>

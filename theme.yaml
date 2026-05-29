@@ -5,8 +5,12 @@ metadata:
 spec:
   displayName: Vahlok
   author:
-    name: Halo Theme Vahlok
+    name: Azite
+    website: https://github.com/Aziteee
   description: 一个以私人随笔和归档阅读为核心的 Halo 主题
+  homepage: https://github.com/Aziteee/halo-theme-vahlok#readme
+  repo: https://github.com/Aziteee/halo-theme-vahlok
+  issues: https://github.com/Aziteee/halo-theme-vahlok/issues
   settingName: "halo-theme-vahlok-setting"
   configMapName: "halo-theme-vahlok-configMap"
   version: 1.0.0

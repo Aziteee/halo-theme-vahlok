@@ -110,7 +110,7 @@
                 aria-label="展开评论"
               >
                 <iconify-icon
-                  class="moment-stats__icon"
+                  class="moment-stats__icon mt-1"
                   icon="material-symbols:chat-bubble-outline-rounded"
                 ></iconify-icon>
                 <span th:text="${moment.stats.approvedComment}">0</span>
@@ -134,9 +134,23 @@
       th:if="${moments.hasPrevious() || moments.hasNext()}"
       aria-label="瞬间分页"
     >
-      <a th:if="${moments.hasPrevious()}" th:href="@{${moments.prevUrl}}">上一页</a>
+      <a
+        class="pagination__link pagination__link--prev"
+        th:if="${moments.hasPrevious()}"
+        th:href="@{${moments.prevUrl}}"
+        aria-label="上一页"
+      >
+        <img class="pagination__arrow" src="./assets/arrow_small.png" alt="" />
+      </a>
       <span th:text="|${moments.page} / ${moments.totalPages}|">1 / 1</span>
-      <a th:if="${moments.hasNext()}" th:href="@{${moments.nextUrl}}">下一页</a>
+      <a
+        class="pagination__link pagination__link--next"
+        th:if="${moments.hasNext()}"
+        th:href="@{${moments.nextUrl}}"
+        aria-label="下一页"
+      >
+        <img class="pagination__arrow" src="./assets/arrow_small.png" alt="" />
+      </a>
     </nav>
   </section>
 </include>

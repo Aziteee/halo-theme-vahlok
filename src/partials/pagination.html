@@ -1,5 +1,19 @@
 <nav class="pagination" th:if="${posts.hasPrevious() || posts.hasNext()}" aria-label="文章分页">
-  <a th:if="${posts.hasPrevious()}" th:href="@{${posts.prevUrl}}">上一页</a>
+  <a
+    class="pagination__link pagination__link--prev"
+    th:if="${posts.hasPrevious()}"
+    th:href="@{${posts.prevUrl}}"
+    aria-label="上一页"
+  >
+    <img class="pagination__arrow" src="./assets/arrow_small.png" alt="" />
+  </a>
   <span th:text="|${posts.page} / ${posts.totalPages}|">1 / 1</span>
-  <a th:if="${posts.hasNext()}" th:href="@{${posts.nextUrl}}">下一页</a>
+  <a
+    class="pagination__link pagination__link--next"
+    th:if="${posts.hasNext()}"
+    th:href="@{${posts.nextUrl}}"
+    aria-label="下一页"
+  >
+    <img class="pagination__arrow" src="./assets/arrow_small.png" alt="" />
+  </a>
 </nav>

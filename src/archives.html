@@ -48,8 +48,22 @@
     th:if="${archives.hasPrevious() || archives.hasNext()}"
     aria-label="归档分页"
   >
-    <a th:if="${archives.hasPrevious()}" th:href="@{${archives.prevUrl}}">上一页</a>
+    <a
+      class="pagination__link pagination__link--prev"
+      th:if="${archives.hasPrevious()}"
+      th:href="@{${archives.prevUrl}}"
+      aria-label="上一页"
+    >
+      <img class="pagination__arrow" src="./assets/arrow_small.png" alt="" />
+    </a>
     <span th:text="|${archives.page} / ${archives.totalPages}|">1 / 1</span>
-    <a th:if="${archives.hasNext()}" th:href="@{${archives.nextUrl}}">下一页</a>
+    <a
+      class="pagination__link pagination__link--next"
+      th:if="${archives.hasNext()}"
+      th:href="@{${archives.nextUrl}}"
+      aria-label="下一页"
+    >
+      <img class="pagination__arrow" src="./assets/arrow_small.png" alt="" />
+    </a>
   </nav>
 </include>
