@@ -495,12 +495,10 @@ button:focus-visible {
   }
 
   .moments-filter {
-    @apply mb-8 flex flex-wrap gap-2 border-b pb-5;
     border-color: var(--gold-soft);
   }
 
   .moment-empty {
-    @apply text-neutral-7 border p-8;
     border-color: var(--gold-soft);
     border-radius: 4px;
     background: var(--panel);
@@ -562,30 +560,6 @@ button:focus-visible {
     background: var(--color-accent);
   }
 
-  .moment-date {
-    @apply text-right;
-    padding-top: 10px;
-  }
-
-  .moment-date time {
-    @apply text-neutral-10 font-serif;
-    display: block;
-  }
-
-  .moment-date span,
-  .moment-date small {
-    display: block;
-  }
-
-  .moment-date span {
-    font-size: 22px;
-    line-height: 1.1;
-  }
-
-  .moment-date small {
-    @apply text-neutral-6 mt-1 font-sans text-[11px];
-  }
-
   .moment-card {
     position: relative;
     overflow: hidden;
@@ -625,7 +599,6 @@ button:focus-visible {
   }
 
   .moment-content {
-    @apply text-neutral-9 leading-8;
     font-size: 15px;
   }
 
@@ -639,16 +612,6 @@ button:focus-visible {
 
   .moment-content p:last-child {
     margin-bottom: 0;
-  }
-
-  .moment-media {
-    margin-top: 16px;
-  }
-
-  .moment-media__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 92px);
-    gap: 8px;
   }
 
   .moment-media__grid--single {
@@ -709,31 +672,7 @@ button:focus-visible {
   }
 
   .moment-stats {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
-    padding-top: 14px;
     border-top: 1px solid rgba(238, 228, 207, 0.1);
-  }
-
-  .moment-stats__actions {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-left: auto;
-  }
-
-  .moment-stats__item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 30px;
-    color: var(--color-neutral-7);
-    font-size: 12px;
-    text-decoration: none;
   }
 
   .moment-stats__toggle {
@@ -778,18 +717,7 @@ button:focus-visible {
     font-size: 12px !important;
   }
 
-  .moment-comments {
-    margin-top: 14px;
-    padding-top: 14px;
-  }
-
-  .links-section {
-    display: grid;
-    gap: 34px;
-  }
-
   .link-empty {
-    @apply text-neutral-7 relative overflow-hidden border p-8;
     border-color: var(--gold-soft);
     border-radius: 6px;
     background:
@@ -810,30 +738,12 @@ button:focus-visible {
     margin: 10px 0 0;
   }
 
-  .link-group {
-    position: relative;
-  }
-
   .link-group__heading {
-    @apply flex items-end justify-between gap-6 border-b pb-4;
     border-color: var(--gold-soft);
     margin-bottom: 18px;
   }
 
-  .link-group__count {
-    @apply text-neutral-6 text-xs uppercase;
-    letter-spacing: 0.14em;
-    white-space: nowrap;
-  }
-
-  .link-grid {
-    display: grid;
-    gap: 14px;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  }
-
   .link-card {
-    @apply text-neutral-9 relative flex items-center gap-4 overflow-hidden p-4 text-left no-underline;
     border: 1px solid rgba(238, 228, 207, 0.14);
     border-radius: 6px;
     background:
@@ -889,7 +799,6 @@ button:focus-visible {
   }
 
   .link-card__logo-wrap {
-    @apply shrink-0;
     position: relative;
     z-index: 1;
     width: 58px;
@@ -910,7 +819,6 @@ button:focus-visible {
   }
 
   .link-card__placeholder {
-    @apply text-accent flex h-full w-full items-center justify-center;
     border-radius: 4px;
     background: rgba(214, 181, 111, 0.1);
   }
@@ -927,12 +835,7 @@ button:focus-visible {
     flex: 1;
   }
 
-  .link-card__name {
-    @apply text-neutral-10 block font-serif text-lg leading-tight font-normal;
-  }
-
   .link-card__desc {
-    @apply text-neutral-7 mt-2 line-clamp-2 block leading-relaxed;
     font-size: 13px;
   }
 

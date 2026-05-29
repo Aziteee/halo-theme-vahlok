@@ -4,39 +4,38 @@
   </template>
 
   <section aria-labelledby="links-title">
-    <p class="kicker">Links</p>
-    <h1 id="links-title" class="hero-title" th:text="${linksTitle}">链接</h1>
-    <p class="hero-intro">值得驻足的好地方。</p>
+    <p class="text-accent text-xs leading-[1.35] uppercase tracking-[0.14em]">Links</p>
+    <h1 id="links-title" class="hero-title text-neutral-10 relative z-[1] m-0 max-w-3xl font-serif leading-tight font-normal" th:text="${linksTitle}">链接</h1>
+    <p class="text-neutral-7 relative z-[1] mt-5 max-w-2xl text-base leading-8 sm:text-lg">值得驻足的好地方。</p>
   </section>
 
-  <section class="section-block links-section">
+  <section class="my-12 grid gap-[34px]">
     <div
-      class="link-empty"
+      class="link-empty text-neutral-7 relative overflow-hidden border p-8"
       th:if="${#lists.isEmpty(groups) or (#lists.isEmpty(groups[0].links) and groups.size() == 1)}"
     >
-      <p class="kicker">No Links</p>
+      <p class="text-accent text-xs leading-[1.35] uppercase tracking-[0.14em]">No Links</p>
       <p>还没有添加链接。</p>
     </div>
 
-    <section class="link-group" th:each="g : ${groups}" th:if="${not #lists.isEmpty(g.links)}">
-      <div class="link-group__heading">
+    <section class="link-group relative" th:each="g : ${groups}" th:if="${not #lists.isEmpty(g.links)}">
+      <div class="link-group__heading flex items-end justify-between gap-6 border-b pb-4">
         <div>
-          <!-- <p class="kicker" th:text="${g.metadata.kicker} ?: 'Collection'">Collection</p> -->
-          <h2 class="section-title" th:text="${g.spec.displayName} ?: '未分组'">分组</h2>
+          <h2 class="section-title text-neutral-10 m-0 font-serif leading-[1.12] font-normal" th:text="${g.spec.displayName} ?: '未分组'">分组</h2>
         </div>
-        <span class="link-group__count" th:text="|${g.links.size()} links|">0 links</span>
+        <span class="text-neutral-6 text-xs uppercase tracking-[0.14em] whitespace-nowrap" th:text="|${g.links.size()} links|">0 links</span>
       </div>
 
-      <div class="link-grid">
+      <div class="grid gap-3.5 grid-cols-[repeat(auto-fill,minmax(270px,1fr))]">
         <a
-          class="link-card"
+          class="link-card text-neutral-9 relative flex items-center gap-4 overflow-hidden p-4 text-left no-underline"
           th:each="link : ${g.links}"
           th:href="${link.spec.url}"
           target="_blank"
           rel="noopener"
           th:aria-label="|访问 ${link.spec.displayName}|"
         >
-          <span class="link-card__logo-wrap">
+          <span class="link-card__logo-wrap shrink-0">
             <img
               class="link-card__logo"
               th:if="${not #strings.isEmpty(link.spec.logo)}"
@@ -44,16 +43,16 @@
               th:alt="${link.spec.displayName}"
             />
             <span
-              class="link-card__placeholder"
+              class="link-card__placeholder text-accent flex h-full w-full items-center justify-center"
               th:unless="${not #strings.isEmpty(link.spec.logo)}"
             >
               <iconify-icon icon="material-symbols:link-rounded"></iconify-icon>
             </span>
           </span>
           <span class="link-card__body">
-            <span class="link-card__name" th:text="${link.spec.displayName}">友链名称</span>
+            <span class="text-neutral-10 block font-serif text-lg leading-tight font-normal" th:text="${link.spec.displayName}">友链名称</span>
             <small
-              class="link-card__desc"
+              class="link-card__desc text-neutral-7 mt-2 line-clamp-2 block leading-relaxed"
               th:if="${not #strings.isEmpty(link.spec.description)}"
               th:text="${link.spec.description}"
               >描述</small

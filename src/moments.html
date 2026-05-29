@@ -4,21 +4,21 @@
   </template>
 
   <section aria-labelledby="moments-title">
-    <p class="kicker">Moments</p>
-    <h1 id="moments-title" class="hero-title">瞬间</h1>
-    <p class="hero-intro">记录生活的碎片与光影。</p>
+    <p class="text-accent text-xs leading-[1.35] uppercase tracking-[0.14em]">Moments</p>
+    <h1 id="moments-title" class="hero-title text-neutral-10 relative z-[1] m-0 max-w-3xl font-serif leading-tight font-normal">瞬间</h1>
+    <p class="text-neutral-7 relative z-[1] mt-5 max-w-2xl text-base leading-8 sm:text-lg">记录生活的碎片与光影。</p>
   </section>
 
-  <section class="section-block">
-    <div class="moments-filter" th:if="${not #lists.isEmpty(tags)}" aria-label="瞬间标签筛选">
+  <section class="my-12">
+    <div class="moments-filter mb-8 flex flex-wrap gap-2 border-b pb-5" th:if="${not #lists.isEmpty(tags)}" aria-label="瞬间标签筛选">
       <a
-        class="chip"
+        class="chip text-neutral-7 hover:text-neutral-10 px-3 py-2 text-sm no-underline"
         th:classappend="${#lists.isEmpty(param.tag) ? 'chip--active' : ''}"
         th:href="@{/moments}"
         >全部
       </a>
       <a
-        class="chip"
+        class="chip text-neutral-7 hover:text-neutral-10 px-3 py-2 text-sm no-underline"
         th:each="tag : ${tags}"
         th:href="|/moments?tag=${tag.name}|"
         th:classappend="${#arrays.contains(param.tag, tag.name) ? 'chip--active' : ''}"
@@ -27,8 +27,8 @@
       >
     </div>
 
-    <div class="moment-empty" th:if="${#lists.isEmpty(moments.items)}">
-      <p class="kicker">No Moments</p>
+    <div class="moment-empty text-neutral-7 border p-8" th:if="${#lists.isEmpty(moments.items)}">
+      <p class="text-accent text-xs leading-[1.35] uppercase tracking-[0.14em]">No Moments</p>
       <p>此刻还没有留下瞬间。</p>
     </div>
 
@@ -43,10 +43,10 @@
           <span></span>
         </div>
 
-        <div class="moment-date">
-          <time th:datetime="${moment.spec.releaseTime}">
-            <span th:text="${#temporals.format(moment.spec.releaseTime, 'MM.dd')}">05.24</span>
-            <small th:text="${#temporals.format(moment.spec.releaseTime, 'yyyy HH:mm')}"
+        <div class="text-right pt-[10px]">
+          <time class="text-neutral-10 font-serif block" th:datetime="${moment.spec.releaseTime}">
+            <span class="block text-[22px] leading-[1.1]" th:text="${#temporals.format(moment.spec.releaseTime, 'MM.dd')}">05.24</span>
+            <small class="text-neutral-6 mt-1 font-sans text-[11px] block" th:text="${#temporals.format(moment.spec.releaseTime, 'yyyy HH:mm')}"
               >2026 12:00</small
             >
           </time>
@@ -55,14 +55,14 @@
         <div class="moment-card">
           <div class="moment-body">
             <div
-              class="moment-content"
+              class="moment-content text-neutral-9 leading-8 text-[15px]"
               th:if="${not #strings.isEmpty(content.html)}"
               th:utext="${content.html}"
             ></div>
 
-            <div class="moment-media" th:if="${not #lists.isEmpty(content.medium)}">
+            <div class="mt-4" th:if="${not #lists.isEmpty(content.medium)}">
               <div
-                class="moment-media__grid"
+                class="grid gap-2 grid-cols-[repeat(auto-fill,92px)]"
                 th:classappend="${content.medium.size() == 1} ? 'moment-media__grid--single' : ''"
               >
                 <figure class="moment-media__frame" th:each="item : ${content.medium}">
@@ -92,18 +92,18 @@
             </div>
           </div>
 
-          <div class="moment-stats">
-            <div class="chip-list" th:if="${not #lists.isEmpty(moment.spec.tags)}">
+          <div class="moment-stats flex items-center justify-between flex-wrap gap-3 mt-[18px] pt-[14px]">
+            <div class="chip-list flex flex-wrap gap-2" th:if="${not #lists.isEmpty(moment.spec.tags)}">
               <span
-                class="chip chip--sm"
+                class="chip chip--sm text-neutral-7 hover:text-neutral-10 px-3 py-2 text-sm no-underline"
                 th:each="tag : ${moment.spec.tags}"
                 th:text="|#${tag}|"
               ></span>
             </div>
 
-            <div class="moment-stats__actions">
+            <div class="flex items-center gap-[14px] ml-auto">
               <button
-                class="moment-stats__item moment-stats__toggle"
+                class="inline-flex items-center gap-1.5 min-h-[30px] text-neutral-7 text-xs no-underline moment-stats__toggle"
                 type="button"
                 x-bind:class="showComment && 'moment-stats__toggle--active'"
                 x-on:click="showComment = !showComment"
@@ -118,7 +118,7 @@
             </div>
           </div>
 
-          <div class="moment-comments" x-show="showComment" x-cloak>
+          <div class="mt-[14px] pt-[14px]" x-show="showComment" x-cloak>
             <halo:comment
               group="moment.halo.run"
               kind="Moment"
@@ -130,7 +130,7 @@
     </div>
 
     <nav
-      class="pagination"
+      class="pagination text-neutral-7 mt-8 flex items-center justify-center gap-4 text-sm"
       th:if="${moments.hasPrevious() || moments.hasNext()}"
       aria-label="瞬间分页"
     >
