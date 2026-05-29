@@ -4,21 +4,16 @@
     <script type="module" src="./js/post.ts"></script>
   </template>
 
-  <article class="article-shell">
-    <header class="article-header">
-      <div class="essay-meta">
-        <span th:if="${not #lists.isEmpty(post.categories)}">
-          <a
-            class="hover:text-neutral-10"
-            th:href="@{${post.categories[0].status.permalink}}"
-            th:text="${post.categories[0].spec.displayName}"
-          ></a>
-          ·
-        </span>
-        <time th:text="${#temporals.format(post.spec.publishTime, 'yyyy.MM.dd')}">2026.05.24</time>
-      </div>
+  <article class="article-shell article-shell--post">
+    <header class="article-header article-header--with-divider">
       <h1 class="article-title" th:text="${post.spec.title}">在雨声里整理旧日心绪</h1>
     </header>
+
+    <div class="article-divider" aria-hidden="true">
+      <span class="article-divider__left"></span>
+      <span class="article-divider__middle"></span>
+      <span class="article-divider__right"></span>
+    </div>
 
     <div class="article-content" th:utext="${post.content.content}"></div>
 
