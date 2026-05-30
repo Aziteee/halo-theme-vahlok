@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Vahlok Logo" src="https://qn.azite.cn/blog/vahlok_logo.png" width="100">
+  <img alt="Vahlok Logo" src="public/assets/logo.png" width="100">
 </p>
 
 <h1 align="center">Halo Theme Vahlok</h1>
